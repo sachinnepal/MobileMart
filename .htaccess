@@ -1,0 +1,29 @@
+# MobileMart .htaccess Configuration
+
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Prevent directory listing
+Options -Indexes
+
+# Protect config files
+<FilesMatch "^(db\.php|config\.php)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Set default charset
+AddDefaultCharset UTF-8
+
+# Prevent access to sensitive files
+<FilesMatch "\.(sql|md|log)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# PHP Security Settings
+<IfModule mod_php7.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+</IfModule>
+
